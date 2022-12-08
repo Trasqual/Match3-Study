@@ -1,6 +1,7 @@
 
-public enum ItemType
+public enum PieceType
 {
+    RandomColor,
     Red,
     Green,
     Blue,

@@ -17,9 +17,7 @@ public class Slot : MonoBehaviour
         Y = y;
         _board = board;
 
-        transform.localPosition = new Vector3(X, Y, 0) * _board.SlotSize + _board.GetStartPos();
-        transform.GetChild(0).localScale *= _board.SlotSize;
-
+        transform.localPosition = new Vector3(X, Y, 0);
         UpdateName();
     }
 

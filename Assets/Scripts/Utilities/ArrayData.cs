@@ -1,10 +1,11 @@
+using System;
 
-[System.Serializable]
-public class ArrayData
+[Serializable]
+public class ArrayData<T> where T : IConvertible
 {
     public ColumnData[] columnDatas = new ColumnData[5];
 
-    public ArrayData(int columnCount, int rowCount)
+    public ArrayData(int rowCount, int columnCount)
     {
         columnDatas = new ColumnData[columnCount];
         for (int i = 0; i < columnDatas.Length; i++)
@@ -13,14 +14,14 @@ public class ArrayData
         }
     }
 
-    [System.Serializable]
+    [Serializable]
     public class ColumnData
     {
-        public ItemType[] rowDatas;
+        public T[] rowDatas;
 
         public ColumnData(int rowCount)
         {
-            rowDatas = new ItemType[rowCount];
+            rowDatas = new T[rowCount];
         }
     }
 }

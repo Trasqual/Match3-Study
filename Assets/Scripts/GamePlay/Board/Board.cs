@@ -4,21 +4,18 @@ public class Board : MonoBehaviour
 {
     [SerializeField] private Slot slotPrefab;
 
-    [field: Range(0.1f, 1f)]
-    [field: SerializeField] public float SlotSize { get; private set; } = 1f;
-
-    private int columns = 10;
-    private int rows = 10;
+    private readonly int columns = 10;
+    private readonly int rows = 10;
 
     private Slot[,] slots;
 
     private void Awake()
     {
         slots = new Slot[columns, rows];
-        PrepareBoard();
+        InitializeBoard();
     }
 
-    private void PrepareBoard()
+    private void InitializeBoard()
     {
         for (int i = 0; i < columns; i++)
         {
@@ -30,14 +27,6 @@ public class Board : MonoBehaviour
                 slots[i, j] = slot;
             }
         }
-    }
-
-    public Vector3 GetStartPos()
-    {
-        var startX = -(columns * SlotSize / 2f) + SlotSize / 2f;
-        var startY = -(columns * SlotSize / 2f) + SlotSize / 2f;
-
-        return new Vector3(startX, startY, 0f);
     }
 
     public Slot GetSlot(Slot slot, Direction dir)
