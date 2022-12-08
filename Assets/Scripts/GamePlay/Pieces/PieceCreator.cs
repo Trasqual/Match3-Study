@@ -3,24 +3,26 @@ using UnityEngine;
 
 public class PieceCreator : Singleton<PieceCreator>
 {
+    [SerializeField] PieceBase piecePrefab;
+
     [SerializeField] Sprite redPiece;
     [SerializeField] Sprite greenPiece;
     [SerializeField] Sprite bluePiece;
     [SerializeField] Sprite yellowPiece;
 
-    private Dictionary<PieceType, Sprite> pieceSprites = new();
+    private Dictionary<PieceType, Sprite> regularPieceSprites = new();
 
     protected override void Awake()
     {
         base.Awake();
-        pieceSprites[PieceType.Red] = redPiece;
-        pieceSprites[PieceType.Green] = greenPiece;
-        pieceSprites[PieceType.Blue] = bluePiece;
-        pieceSprites[PieceType.Yellow] = yellowPiece;
+        regularPieceSprites[PieceType.Red] = redPiece;
+        regularPieceSprites[PieceType.Green] = greenPiece;
+        regularPieceSprites[PieceType.Blue] = bluePiece;
+        regularPieceSprites[PieceType.Yellow] = yellowPiece;
     }
 
-    public Sprite GetSprite(PieceType pieceType)
+    private Sprite GetSprite(PieceType pieceType)
     {
-        return pieceSprites[pieceType];
+        return regularPieceSprites[pieceType];
     }
 }
